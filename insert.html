@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    title:<input type="text" id="title">
+    Content:<textarea id="content"></textarea>
+    <button onclick="submit()">Publish</button>
+</body>
+<script>
+    id=location.href.split('?')[1].split('-@-')[0];
+async function submit(){
+//    window.location.replace('https://blog-chi-eight-10.vercel.app/BlogWrite?'+id+"-@-"+document.getElementById("title").value+"-@-"+document.getElementById("content").value);
+var req =await fetch({
+    method: 'POST',
+    url: 'https://blog-chi-eight-10.vercel.app/BlogWrite',
+    headers : {
+        'Content-Type' : 'application/json'
+    },
+    data: JSON.stringify({"id":id,"title":document.getElementById("title").value,"content":document.getElementById("content").value})
+});
+console.log(req);
+}
+</script>
+</html>

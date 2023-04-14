@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body style="background-image: url('https://drive.google.com/uc?export=view&id=1U7ixk4SHUusP5GqIvdAZKNZKjGyCnAry');">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100" style="margin-top: 75px;">
+          <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="card" style="border-radius: 15px;" >
+              <div class="card-body  pt-5 p-sm-5 mb-0" >
+                <h6 class="text-uppercase text-center" >Login</h6>
+                <form>
+      
+                    <div class="form-outline mb-4">
+                      <input type="text" id="Luserid" class="form-control form-control-lg" />
+                      <label class="form-label" for="Luserid">USER ID</label>
+                    </div>
+    
+                    <div class="form-outline mb-4">
+                      <input type="password" id="Lpassword" class="form-control form-control-lg" />
+                      <label class="form-label" for="Lpassword">PASSWORD</label>
+                    </div>
+    
+                    <div class="form-check d-flex justify-content-center mb-5">
+                      <input
+                        class="form-check-input me-2"
+                        type="checkbox"
+
+                        value=""
+                        id="checkboxL"
+                      />
+                      <label class="form-check-label" for="checkboxL">
+                        I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
+                      </label>
+                    </div>
+    
+
+
+                    <!-- button  -->
+                    <div class="d-flex justify-content-center">
+                      <input type="button"  onclick="Login()" value="LOGIN"  class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" class="fw-bold text-body cts">
+                      
+                      
+                    </div>
+    
+                    <a class="text-center text-muted mt-5 mb-0" href="https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?client_id=916164973545-d9v2svtpo7n7jq8pafl56qeovrb73op2.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fblack-devil963.github.io%2Fblog&response_type=token&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&include_granted_scopes=true&state=pass-through%20value&service=lso&o2v=2&flowName=GeneralOAuthFlow">Create an account </a>
+                  </form>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+<script>
+    function Login(){
+        if(!document.getElementById("checkboxL").checked){alert('You have\'t checked the confirmation box');return;}
+      var userid=document.getElementById('Luserid').value;
+      var pass=document.getElementById('Lpassword').value;
+      window.location.replace('https://blog-chi-eight-10.vercel.app/logcheck?'+userid+'-@-'+pass)
+      //window.location.replace('https://blog-chi-eight-10.vercel.app/BlogWrite?nkrpnbe-@-chaisutabaar-@-chlo%20pite%20hein');
+}
+</script>
+</html>

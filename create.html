@@ -1,0 +1,41 @@
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+ 
+<style>
+div{
+display:inline-block;}
+</style></head>
+<body><h1>Welcome to Profile Page...</h1>
+    <div style="border:2px solid red"><img id="image" width="70px" ></div>
+    <div>
+    Userid:<br>
+    Name:<br>
+    password:<br>
+    confirm password:
+</div>
+<div>
+    <input type="text" id="Userid" disabled><br>
+    <input type="text" id="name"><br>
+    <input id="psd" type="password"><br>
+    <input id="cpsd" type="password">
+</div><br>
+    <button onclick="submit()">Create</button>
+
+</body>
+<script>
+    var urlParams = location.search;
+            document.getElementById('Userid').value=urlParams.split('?')[1].split('-@-')[0];
+            document.getElementById('name').value=urlParams.split('-@-')[1];
+            document.getElementById('image').setAttribute('src',urlParams.split('-@-')[2]);
+ function submit(){
+if(document.getElementById('cpsd').value===document.getElementById('psd').value)window.location.replace('https://blog-chi-eight-10.vercel.app/record?'+document.getElementById('Userid').value+'@'+document.getElementById('name').value+'@'+document.getElementById('image').src+'@'+document.getElementById('cpsd').value);
+else alert('password mismatch')
+ }
+</script>
+</html>

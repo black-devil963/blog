@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="width: fit-content;margin:auto;">
+    <a onclick="Insert()" style="border-radius:50px;"><img src="https://drive.google.com/uc?export=view&id=1NtdQOIQe0RMYZHF0ulv7JVsyIUbb3fzH" style="border-radius:100px;"alt=""></a>
+    <a onclick="view()" style="border-radius:150px;"><img src="https://drive.google.com/uc?export=view&id=1Om1mQKTsjdcglHgObU-uOG-1BPjtjJGa" style="border-radius:100px;"alt=""></a>
+    <br>
+    <button onclick="alert('2')" ><img src="https://drive.google.com/uc?export=view&id=1NtdQOIQe0RMYZHF0ulv7JVsyIUbb3fzH" alt=""></button>
+    <button onclick="alert('3')"><img src="https://drive.google.com/uc?export=view&id=1NtdQOIQe0RMYZHF0ulv7JVsyIUbb3fzH" alt=""></button>
+</div>
+    
+
+</body>
+<script>
+    id=location.href.split('?')[1].split('-@-')[0]
+function Insert(){
+   window.location.replace('https://blog-chi-eight-10.vercel.app/insert/'+id);
+}
+function view(){
+   window.location.replace('https://blog-chi-eight-10.vercel.app/listall');
+}
+
+</script>
+<style>
+    button{
+        padding:0px;
+        margin: 0px;
+        border: 0px;
+    }
+</style>
+</html>

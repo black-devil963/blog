@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oath2</title>
+    <script>
+    function signIn(){
+    
+  var oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
+ 
+  var form = document.createElement('form');
+  form.setAttribute('method', 'GET'); // Send as a GET request.
+  form.setAttribute('action', oauth2Endpoint);
+ 
+  // Parameters to pass to OAuth 2.0 endpoint.
+  var params = {'client_id': '916164973545-d9v2svtpo7n7jq8pafl56qeovrb73op2.apps.googleusercontent.com',
+                'redirect_uri': 'https://black-devil963.github.io/blog',
+                'response_type': 'token',
+                'scope':'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile',
+                'include_granted_scopes': 'true',
+                'state': 'pass-through value'};
+        //'state': 'openid profile email'};
+ 
+  // Add form parameters as hidden input values.
+  for (var p in params) {
+    var input = document.createElement('input');
+    input.setAttribute('type', 'hidden');
+    input.setAttribute('name', p);
+    input.setAttribute('value', params[p]);
+    form.appendChild(input);
+  }
+ 
+  // Add form to page and submit it to open the OAuth 2.0 endpoint.
+  document.body.appendChild(form);
+  form.submit();
+}
+    </script>
+    
+</head>
+<body>
+    <h1>Google sign in...</h1>
+    <button onclick="signIn()">sign in with google</button>
+</body>
+<script src="script.js"></script>
+</html>
