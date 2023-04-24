@@ -55,7 +55,7 @@ if(end=="Login"){if(indexs==length-1){console.log(data);console.log("tata");res.
 else if(indexs==length)res.send(formated); 
 }});
 
- app.get("/insert",function (req,res){
+ app.get("/insert*",function (req,res){
   res.send(`<body style="background-color:red"><form method='post' action='/saveform'><input type='text' name="id" value=${req.originalUrl.split('/insert/')[1]} hidden /><br><input type='text' placeholder='title' id='title' name="title" required /><br><textarea name="content" placeholder='content' id='content' required ></textarea><br><button type='submit'>save</button></form></body>`);
   // history.pushState('www.fb.com');
  });
