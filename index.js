@@ -55,6 +55,19 @@ if(end=="Login"){if(indexs==length-1){console.log(data);console.log("tata");res.
 else if(indexs==length)res.send(formated); 
 }});
 
+app.get("/delete/*",async function (req,res){
+  let result = await client.connect();
+  db=result.db(databaseName);
+  var namer=req.originalUrl.split('/delete/')[1].split('-@-')[0];
+  var formated=`<center><h1>${namer} post delete panel</h1></center>`;
+  collection=await db.collection(namer);
+  data= await collection.deleteOne({_id:parseInt(req.originalUrl.split('/delete/')[1].split('-@-')[1])});
+  data=await collection.find({}).toArray();
+  await data.forEach((item, indexx)=>{
+  formated+=`<div style='margin:1px 2px;border-bottom: 5px solid black;background-color:yellow;position:relative' id=${data[indexx]['_id']}><h1 style='text-align:center'>${data[indexx]['title']}</h1>${data[indexx]['content']}<a style="position:absolute;top:10px;right:10px;" href="http://localhost:5050/delete/${namer}-@-${data[indexx]['_id']}">del</a></div>`;
+})
+res.send(formated);
+});
  app.get("/insert*",function (req,res){
   res.send(`<body style="background-color:red"><form method='post' action='/saveform'><input type='text' name="id" value=${req.originalUrl.split('/insert/')[1]} hidden /><br><input type='text' placeholder='title' id='title' name="title" required /><br><textarea name="content" placeholder='content' id='content' required ></textarea><br><button type='submit'>save</button></form></body>`);
   // history.pushState('www.fb.com');

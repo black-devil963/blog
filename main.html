@@ -11,8 +11,9 @@
     <a onclick="Insert()" style="border-radius:50px;"><img src="https://drive.google.com/uc?export=view&id=1NtdQOIQe0RMYZHF0ulv7JVsyIUbb3fzH" style="border-radius:100px;"alt=""></a>
     <a onclick="view()" style="border-radius:150px;"><img src="https://drive.google.com/uc?export=view&id=1Om1mQKTsjdcglHgObU-uOG-1BPjtjJGa" style="border-radius:100px;"alt=""></a>
     <br>
-    <button onclick="alert('2')" ><img src="https://drive.google.com/uc?export=view&id=1NtdQOIQe0RMYZHF0ulv7JVsyIUbb3fzH" alt=""></button>
+    
     <button onclick="alert('3')"><img src="https://drive.google.com/uc?export=view&id=1NtdQOIQe0RMYZHF0ulv7JVsyIUbb3fzH" alt=""></button>
+    <button onclick="deletes()" ><img src="https://drive.google.com/uc?export=view&id=1sEn-mX3LrN60CUkYfDp6SKX1mFojWsfK" alt=""></button>
 </div>
     
 
@@ -24,6 +25,9 @@ function Insert(){
 }
 function view(){
    window.location.replace('https://blog-chi-eight-10.vercel.app/listall');
+}
+function deletes(){
+    window.location.replace('https://blog-chi-eight-10.vercel.app/delete/'+id);
 }
 
 </script>
