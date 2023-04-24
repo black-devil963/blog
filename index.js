@@ -51,15 +51,11 @@ app.get("/listall",async function (req,res){
   formated+=`<div style='margin:1px 2px;border-bottom: 5px solid black;background-color:yellow' id=${namer+indexx}><h1 style='text-align:center'>${data[indexx]['title']}</h1>${data[indexx]['content']}</div>`;
 })
 }
-if(end=="Login"){if(indexs==length-1){console.log(data);console.log("tata");res.send(formated);}}
-else if(indexs==length)res.send(formated);
-  
-}//)
-});
- app.get("/signin",function (req,res){
-  res.sendFile(__dirname+"/record.html");      //res.sendfile("login.html");
- });
- app.get("/insert*",function (req,res){
+if(end=="Login"){if(indexs==length-1){console.log(data);console.log("tata");res.send(formated);}}//error page
+else if(indexs==length)res.send(formated); 
+}});
+
+ app.get("/insert",function (req,res){
   res.send(`<body style="background-color:red"><form method='post' action='/saveform'><input type='text' name="id" value=${req.originalUrl.split('/insert/')[1]} hidden /><br><input type='text' placeholder='title' id='title' name="title" required /><br><textarea name="content" placeholder='content' id='content' required ></textarea><br><button type='submit'>save</button></form></body>`);
   // history.pushState('www.fb.com');
  });
