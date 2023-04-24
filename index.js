@@ -72,6 +72,34 @@ res.send(formated);
   res.send(`<body style="background-color:red"><form method='post' action='/saveform'><input type='text' name="id" value=${req.originalUrl.split('/insert/')[1]} hidden /><br><input type='text' placeholder='title' id='title' name="title" required /><br><textarea name="content" placeholder='content' id='content' required ></textarea><br><button type='submit'>save</button></form></body>`);
   // history.pushState('www.fb.com');
  });
+ app.get("/edit/*",async function (req,res){
+  let result = await client.connect();
+  db=result.db(databaseName);
+  var namer=req.originalUrl.split('/edit/')[1].split('-@-')[0];
+  var formated=`<center><h1>${namer} post edit panel</h1></center>`;
+  collection=await db.collection(namer);
+  
+  if(req.originalUrl.split('/edit/')[1].split('-@-')[1]==undefined){
+    data= await collection.deleteOne({_id:parseInt(req.originalUrl.split('/edit/')[1].split('-@-')[1])});
+    data=await collection.find({}).toArray();
+    await data.forEach((item, indexx)=>{
+    formated+=`<div style='margin:1px 2px;border-bottom: 5px solid black;background-color:yellow;position:relative' id=${data[indexx]['_id']}><h1 style='text-align:center'>${data[indexx]['title']}</h1>${data[indexx]['content']}<a style="position:absolute;top:10px;right:10px;" href="https://blog-chi-eight-10.vercel.app/edit/${namer}-@-${data[indexx]['_id']}">edit</a></div>`;
+  })
+  res.send(formated);
+  }
+  data=await collection.find({_id:parseInt(req.originalUrl.split('/edit/')[1].split('-@-')[1])}).toArray();
+  if(data.length==1){
+    formated+=`<body style="background-color:red"><form method='post' action='/editform'><input type='text' name="dbname" value=${namer} hidden /><input type='text' name="id" value=${data[0]._id} hidden /><br><input type='text' placeholder='title' id='title' name="title" value=${data[0].title} required /><br><textarea name="content" placeholder='content' id='content' cols="65" rows="10" required>${data[0].content}</textarea><br><button type='submit'>save</button></form></body>`
+  }
+  res.send(formated);
+ });
+ app.post('/editform',async function (req,res,next){
+  let result = await client.connect();
+  db=result.db(databaseName);
+  collection=db.collection(req.body.dbname);
+  data=await collection.updateOne({"_id":parseInt(req.body.id)},{$set:{"_id":parseInt(req.body.id),"title":req.body.title,"content":req.body.content}});
+  res.send(data);
+})
  app.post('/saveform',async function (req,res,next){
   let result = await client.connect();
   db=result.db(databaseName);
