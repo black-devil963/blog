@@ -64,7 +64,7 @@ app.get("/delete/*",async function (req,res){
   data= await collection.deleteOne({_id:parseInt(req.originalUrl.split('/delete/')[1].split('-@-')[1])});
   data=await collection.find({}).toArray();
   await data.forEach((item, indexx)=>{
-  formated+=`<div style='margin:1px 2px;border-bottom: 5px solid black;background-color:yellow;position:relative' id=${data[indexx]['_id']}><h1 style='text-align:center'>${data[indexx]['title']}</h1>${data[indexx]['content']}<a style="position:absolute;top:10px;right:10px;" href="http://localhost:5050/delete/${namer}-@-${data[indexx]['_id']}">del</a></div>`;
+  formated+=`<div style='margin:1px 2px;border-bottom: 5px solid black;background-color:yellow;position:relative' id=${data[indexx]['_id']}><h1 style='text-align:center'>${data[indexx]['title']}</h1>${data[indexx]['content']}<a style="position:absolute;top:10px;right:10px;" href="https://blog-chi-eight-10.vercel.app/delete/${namer}-@-${data[indexx]['_id']}">del</a></div>`;
 })
 res.send(formated);
 });
